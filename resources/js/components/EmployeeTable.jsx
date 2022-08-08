@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, {useEffect, useState} from 'react'
-import EmployeeTableItem from './EmployeeTableItem'
+import EmployeeTableItemAction from './EmployeeTableItemAction'
 
 const EmployeeTable = () => {
   const [employeeData, setEmployeeData] = useState([])
@@ -22,6 +22,7 @@ const EmployeeTable = () => {
 
   return (
     <div>
+      
       <table className="table">
         <thead>
           <tr>
@@ -44,7 +45,7 @@ const EmployeeTable = () => {
               <td>{item.zip_code}</td>
               <td>{item.birthdate}</td>
               <td>
-                <EmployeeTableItem 
+                <EmployeeTableItemAction 
                   employeeId={item.id}/>
               </td>
             </tr>

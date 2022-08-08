@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react'
+import EmployeeDeleteModal from './Modals/EmployeeDeleteModal'
 import EmployeeEditModal from './Modals/EmployeeEditModal'
 import EmployeeViewModal from './Modals/EmployeeViewModal'
 
-const EmployeeTableItem = ({employeeId}) => {
+const EmployeeTableItemAction = ({employeeId}) => {
     const [empData, setEmpData] = useState({
-        id: null,
-        first_name: null,
-        middle_name: null,
-        last_name: null,
-        address: null,
-        zip_code: null,
-        birthdate: null
+        id: 0,
+        first_name: 'null',
+        middle_name: 'null',
+        last_name: 'null',
+        address: 'null',
+        zip_code: 'null',
+        birthdate: 'null'
     })
     
     const getEmployeeData = async(id) => {
@@ -32,7 +33,9 @@ const EmployeeTableItem = ({employeeId}) => {
                 data-bs-toggle="modal" 
                 data-bs-target={`#viewModal${employeeId}`}
                 onClick={() => getEmployeeData(employeeId)}>View</button>
-            <EmployeeViewModal modaData={empData} modalId={employeeId} />
+            <EmployeeViewModal 
+                modaData={empData} 
+                modalId={employeeId} />
 
             <button 
                 className="btn btn-primary btn-sm" 
@@ -41,12 +44,20 @@ const EmployeeTableItem = ({employeeId}) => {
                 data-bs-toggle="modal" 
                 data-bs-target={`#editModal${employeeId}`}
                 onClick={() => getEmployeeData(employeeId)}>Edit</button>
-            <EmployeeEditModal modaData={empData} modalId={employeeId} />
+            <EmployeeEditModal 
+                modaData={empData} 
+                modalId={employeeId} />
 
-            <button className="btn btn-warning btn-sm" href="#" role="button">Delete</button>
-
+            <button 
+                className="btn btn-warning btn-sm" 
+                href="#" 
+                role="button"
+                data-bs-toggle="modal" 
+                data-bs-target={`#deleteModal${employeeId}`}>Delete</button>
+            <EmployeeDeleteModal 
+                modalId={employeeId} />
         </div>
     )
 }
 
-export default EmployeeTableItem
+export default EmployeeTableItemAction
