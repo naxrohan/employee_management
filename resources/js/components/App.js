@@ -5,9 +5,11 @@ const App = () => {
   return (
     <div className="container">
             <div className="row justify-content-center">
-                
-                <EmployeeTable />  
-                
+                <div className='col-md-10'>
+                  <div className='card'>
+                    <EmployeeTable />  
+                  </div>
+                </div>
             </div>
         </div>
   )

@@ -1,10 +1,23 @@
 import axios from 'axios'
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+import EmployeeTableItem from './EmployeeTableItem'
 
 const EmployeeTable = () => {
-  axios.get('/get/user/list').then((resp) =>{
-    console.log(res);
-  })
+  const [employeeData, setEmployeeData] = useState([])
+  
+  const getEmployeeData = async() => {
+    try {
+      const data = await axios.get('/employee').then((resp) =>{
+        setEmployeeData(resp.data);
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  
+  useEffect(() => {
+    getEmployeeData();
+  },[])
 
 
   return (
@@ -14,29 +27,29 @@ const EmployeeTable = () => {
           <tr>
             <th scope="col">#</th>
             <th scope="col">First</th>
+            <th scope="col">Middle</th>
             <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">zipcode</th>
+            <th scope="col">birthdate</th>
+            <th scope="col">action</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
+          {employeeData.map((item, key) => (
+            <tr key={key}>
+              <th scope="row">{item.id}</th>
+              <td>{item.first_name}</td>
+              <td>{item.middle_name}</td>
+              <td>{item.last_name}</td>
+              <td>{item.zip_code}</td>
+              <td>{item.birthdate}</td>
+              <td>
+                <EmployeeTableItem 
+                  employeeId={item.id}/>
+              </td>
+            </tr>
+          ))}
+          
         </tbody>
       </table>
     </div>
