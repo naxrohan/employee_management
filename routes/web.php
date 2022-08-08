@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\Backend\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,5 +23,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/user_manage', [App\Http\Controllers\HomeController::class, 'user'])->name('user_manage');
+Route::get('/department_manage', [App\Http\Controllers\HomeController::class, 'department'])->name('department_manage');
+
 Route::resource('users', UserController::class);
 Route::resource('employee', EmployeeController::class);
+Route::resource('department', DepartmentController::class);

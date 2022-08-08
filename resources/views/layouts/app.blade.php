@@ -39,11 +39,11 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link " href="{{ route('users.index') }}">{{ __('User') }}</a>
+                            <a class="nav-link " href="{{ route('user_manage') }}">{{ __('User') }}</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link " href="{{ route('home') }}">{{ __('Home') }}</a>
+                            <a class="nav-link " href="{{ route('department_manage') }}">{{ __('Department') }}</a>
                         </li>
                         @endauth
                     </ul>
