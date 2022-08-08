@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import Alerts from '../Alerts';
 
 const EmployeeEditModal = ({ modaData, modalId }) => {
   const [employeeDetails, setEmpData] = useState(modaData);
+
+  const [error, setError] = useState(null);
+  const [message, setMessage] = useState('Message!!');
 
   useEffect( () => {
     setEmpData(modaData);
@@ -15,15 +19,25 @@ const EmployeeEditModal = ({ modaData, modalId }) => {
 
   const handleUpdate = async(e) => {
     e.preventDefault();
-    try {
+    
       const data = await axios.put(`/employee/${modalId}`,{
         ...employeeDetails
       }).then((resp) =>{
         setEmpData(resp.data);
-      })
-    } catch (error) {
-      console.log(error)
-    }
+
+        setError(false);
+        setMessage("Updated saved!!");
+        setTimeout(() => {
+          location.reload();
+        }, 1500);
+      }).catch((err) => {
+        
+        setError(true);
+        setMessage("Error was encountered!!");
+        setTimeout(() => {
+          location.reload();
+        }, 1500);
+      });
   }
 
   return (
@@ -36,6 +50,8 @@ const EmployeeEditModal = ({ modaData, modalId }) => {
             </div>
             
             <div className="modal-body">
+            
+              <Alerts message={message} type={error}/>
             
               <div className="input-group mb-3">
                 <span className="input-group-text" id="basic-addon1">Id</span>
