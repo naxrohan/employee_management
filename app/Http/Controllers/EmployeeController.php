@@ -17,10 +17,11 @@ class EmployeeController extends Controller
     public function index()
     {
         try {
-            $employees = Employee::all();
+            $employees = Employee::orderBy('id','desc')->get();
             return response()->json($employees);
         } catch (Exception $e) {
             Log::error($e);
+            return response()->json( "Fetch Failure", 500);
         }
     }
 
@@ -42,7 +43,22 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newValues = [
+            'first_name' => $request->get('first_name'),
+            'last_name' => $request->get('last_name'),
+            'middle_name' => $request->get('middle_name'),
+            'address' => $request->get('address'),
+            'zip_code' => $request->get('zip_code'),
+            'birthdate' => $request->get('birthdate'),
+        ];
+        try {
+            Employee::create($newValues);
+
+            return response()->json("Employee Created!!", 201);
+        } catch (Exception $e) {
+            Log::error($e);
+            return response()->json( "Create Failure", 500);
+        }
     }
 
     /**
@@ -57,6 +73,7 @@ class EmployeeController extends Controller
             return response()->json($employee);
         } catch (Exception $e) {
             Log::error($e);
+            return response()->json( "Fetch Failure", 500);
         }
     }
 
@@ -96,6 +113,7 @@ class EmployeeController extends Controller
 
         } catch (Exception $e) {
             Log::error($e);
+            return response()->json( "Update Failure", 500);
         }
     }
 
@@ -107,6 +125,13 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            Employee::where('id',$id)->delete();
+
+            return response()->json( "Deleted Succesfull", 200);
+        } catch (Exception $e) {
+            Log::error($e);
+            return response()->json( "Deleted Failure", 500);
+        }
     }
 }
