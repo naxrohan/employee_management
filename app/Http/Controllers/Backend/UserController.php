@@ -15,7 +15,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        
+        try {
+            $users = User::orderBy('id','desc')->get();
+            return response()->json($users);
+        } catch (Exception $e) {
+            Log::error($e);
+            return response()->json( "Fetch Failure", 500);
+        }
     }
 
     /**
