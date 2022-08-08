@@ -22,11 +22,7 @@ const EmployeeTableItem = ({employeeId}) => {
             console.log(error)
           }
     }
-
-    // useEffect(() => {
-    //     getEmployeeData(employeeId);
-    //   },[employeeId])
-
+    
     return (
         <div className="btn-group" role="group" aria-label="Basic example">
             <button 

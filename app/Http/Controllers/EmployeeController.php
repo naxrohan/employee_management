@@ -80,7 +80,23 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $updatedValues = [
+                'first_name' => $request->get('first_name'),
+                'last_name' => $request->get('last_name'),
+                'middle_name' => $request->get('middle_name'),
+                'address' => $request->get('address'),
+                'zip_code' => $request->get('zip_code'),
+                'birthdate' => $request->get('birthdate'),
+            ];
+
+            Employee::where('id',$id)->update($updatedValues);
+
+            return response()->json($updatedValues, 201);
+
+        } catch (Exception $e) {
+            Log::error($e);
+        }
     }
 
     /**
