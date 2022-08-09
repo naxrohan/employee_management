@@ -23,7 +23,7 @@ const UserTableItemAction = ({ userId }) => {
                 // data-bs-toggle="modal"
                 // data-bs-target={`#viewModal${userId}`}
                 onClick={() => getUserData(userId)}>View</button>
-            {/* Todo: Add the edit & view Modals */}
+            
 
             <button
                 className="btn btn-primary btn-sm"
@@ -32,6 +32,7 @@ const UserTableItemAction = ({ userId }) => {
                 // data-bs-toggle="modal"
                 // data-bs-target={`#editModal${userId}`}
                 onClick={() => getUserData(userId)}>Edit</button>
+                {/* Todo: Add the edit & view Modals */}
 
         </div>
     )
