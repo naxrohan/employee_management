@@ -51,9 +51,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        try {
+            return response()->json($user);
+        } catch (Exception $e) {
+            Log::error($e);
+            return response()->json( "Fetch Failure", 500);
+        }
     }
 
     /**

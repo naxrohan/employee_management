@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import UserTableItemAction from './UserTableItemAction'
 
 const UserTable = () => {
     const [userData, setUserData] = useState([])
@@ -39,8 +40,8 @@ const UserTable = () => {
               <td>{item.last_name}</td>
               <td>{item.email}</td>
               <td>
-                {/* <EmployeeTableItemAction 
-                  employeeId={item.id}/> */}
+                <UserTableItemAction 
+                  userId={item.id}/>
               </td>
             </tr>
           ))}
