@@ -25,6 +25,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/user_manage', [App\Http\Controllers\HomeController::class, 'user'])->name('user_manage');
 Route::get('/department_manage', [App\Http\Controllers\HomeController::class, 'department'])->name('department_manage');
+Route::get('/country_state_city', [App\Http\Controllers\HomeController::class, 'country_state_city'])->name('country_state_city');
 
 Route::resource('users', UserController::class);
 Route::resource('employee', EmployeeController::class);

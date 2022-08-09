@@ -45,4 +45,15 @@ class HomeController extends Controller
     {
         return view('department');
     }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function country_state_city()
+    {
+        return view('country_state_city');
+    }
+
 }

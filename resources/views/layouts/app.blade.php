@@ -45,6 +45,10 @@
                         <li class="nav-item">
                             <a class="nav-link " href="{{ route('department_manage') }}">{{ __('Department') }}</a>
                         </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link " href="{{ route('country_state_city') }}">{{ __('Country, State & City') }}</a>    
+                        </li>
                         @endauth
                     </ul>
 
