@@ -5,6 +5,7 @@ const UserApp = () => {
   return (
     <div className="container">
             <div className="row justify-content-center">
+            <p className="h3">User Listing</p>
                 <div className='col-md-12'>
                   <div className='card'>
                     <UserTable />
