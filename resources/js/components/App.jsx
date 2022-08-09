@@ -1,6 +1,6 @@
 import React from 'react'
-import EmployeeTable from './EmployeeTable'
-import EmployeeCreateModal from './Modals/EmployeeCreateModal'
+import EmployeeTable from './Employee/EmployeeTable'
+import EmployeeCreateModal from './Employee/Modals/EmployeeCreateModal'
 
 const App = () => {
   return (

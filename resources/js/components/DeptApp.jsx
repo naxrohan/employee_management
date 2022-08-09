@@ -1,12 +1,13 @@
 import React from 'react'
+import DepartmentTable from './Department/DepartmentTable'
 
 const DeptApp = () => {
   return (
     <div className="container">
             <div className="row justify-content-center">
-                <div className='col-md-12'>
+                <div className='col-md-4'>
                   <div className='card'>
-                  DeptApp
+                    <DepartmentTable />
                   </div>
                 </div>
             </div>

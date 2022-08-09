@@ -1,5 +1,5 @@
 import React from 'react'
-import UserTable from './UserTable'
+import UserTable from './User/UserTable'
 
 const UserApp = () => {
   return (

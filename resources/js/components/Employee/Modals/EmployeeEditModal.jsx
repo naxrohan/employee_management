@@ -1,36 +1,32 @@
 import React, { useEffect, useState } from 'react'
-import Alerts from '../Alerts';
+import Alerts from '../../Alerts';
 
-const EmployeeCreateModal = () => {
-    const [employeeDetails, setEmpData] = useState({
-        id: 0,
-        first_name: '',
-        middle_name: '',
-        last_name: '',
-        address: '',
-        zip_code: '',
-        birthdate: ''
-    });
+const EmployeeEditModal = ({ modaData, modalId }) => {
+  const [employeeDetails, setEmpData] = useState(modaData);
 
-    const [error, setError] = useState(null);
-    const [message, setMessage] = useState('Message!!');
+  const [error, setError] = useState(null);
+  const [message, setMessage] = useState('Message!!');
 
-    const handleInputChange = (e) => {
-        setEmpData(prev => {
-            return { ...prev, [e.target.name]: e.target.value }
-        })
-    }
+  useEffect( () => {
+    setEmpData(modaData);
+  },[modaData]);
 
-    const handleUpdate = async (e) => {
+  const handleInputChange = (e) => {
+    setEmpData(prev =>{
+      return {...prev, [e.target.name]:e.target.value}
+    })
+  }
+
+  const handleUpdate = async(e) => {
     e.preventDefault();
-
-      const data = await axios.post(`/employee`,{
+    
+      const data = await axios.put(`/employee/${modalId}`,{
         ...employeeDetails
       }).then((resp) =>{
         setEmpData(resp.data);
 
         setError(false);
-        setMessage("New Employee saved!!");
+        setMessage("Updated saved!!");
         setTimeout(() => {
           location.reload();
         }, 1500);
@@ -45,28 +41,26 @@ const EmployeeCreateModal = () => {
   }
 
   return (
-    <>
-          <div className="row text-right mb-3 pb-3">
-              {/* <div className='col-md-10'> */}
-                  <button
-                      type="button"
-                      className="btn btn-primary text-right col-3 offset-mb-9"
-                      data-bs-toggle="modal"
-                      data-bs-target={`#createModal`}>Create Employee</button>
-              {/* </div> */}
-          </div>
-        
-    <div className="modal fade" id={`createModal`} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div className="modal fade" id={`editModal${modalId}`} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">New Employee Details:</h5>
+              <h5 className="modal-title" id="exampleModalLabel">Employee Details:</h5>
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             
             <div className="modal-body">
             
               <Alerts message={message} type={error}/>
+            
+              <div className="input-group mb-3">
+                <span className="input-group-text" id="basic-addon1">Id</span>
+                <input type="text" className="form-control" 
+                  placeholder="ID" 
+                  aria-label="ID" 
+                  aria-describedby="basic-addon1" 
+                  value={employeeDetails.id} disabled readOnly/>
+              </div>
             
               <div className="input-group mb-3">
                 <span className="input-group-text" id="basic-addon1">First Name</span>
@@ -140,13 +134,12 @@ const EmployeeCreateModal = () => {
               <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
               <button type="button" 
                 className="btn btn-primary"
-                onClick={(e) => handleUpdate(e)}>Save New</button>
+                onClick={(e) => handleUpdate(e)}>Save changes</button>
             </div>
           </div>
         </div>
       </div>
-    </>
   )
 }
 
-export default EmployeeCreateModal
+export default EmployeeEditModal

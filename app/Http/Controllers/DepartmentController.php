@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
 use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
@@ -13,7 +14,13 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            $department = Department::orderBy('id','desc')->get();
+            return response()->json($department);
+        } catch (Exception $e) {
+            Log::error($e);
+            return response()->json( "Fetch Failure", 500);
+        }
     }
 
     /**
@@ -34,7 +41,18 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newValues = [
+            'name' => $request->get('name'),
+            
+        ];
+        try {
+            Department::create($newValues);
+
+            return response()->json("department Created!!", 201);
+        } catch (Exception $e) {
+            Log::error($e);
+            return response()->json( "Create Failure", 500);
+        }
     }
 
     /**
@@ -43,9 +61,14 @@ class DepartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Department $department)
     {
-        //
+        try {
+            return response()->json($department);
+        } catch (Exception $e) {
+            Log::error($e);
+            return response()->json( "Fetch Failure", 500);
+        }
     }
 
     /**
@@ -68,7 +91,19 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $updatedValues = [
+                'name' => $request->get('name'),
+            ];
+
+            Department::where('id',$id)->update($updatedValues);
+
+            return response()->json($updatedValues, 201);
+
+        } catch (Exception $e) {
+            Log::error($e);
+            return response()->json( "Update Failure", 500);
+        }
     }
 
     /**
@@ -79,6 +114,13 @@ class DepartmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            Department::where('id',$id)->delete();
+
+            return response()->json( "Deleted Succesfull", 200);
+        } catch (Exception $e) {
+            Log::error($e);
+            return response()->json( "Deleted Failure", 500);
+        }
     }
 }

@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
-import Alerts from '../Alerts'
+import Alerts from '../../Alerts';
 
-const EmployeeDeleteModal = ({modalId}) => {
+const DepartmentDeleteModal = ({modalId}) => {
 
     const [error, setError] = useState(null);
     const [message, setMessage] = useState('Message!!');
 
     const handleDelete = async() => {
-        const removeUser = await axios.delete(`/employee/${modalId}`)
+        const removedept = await axios.delete(`/department/${modalId}`)
         .then((resp) => {
             setError(false);
-            setMessage("Employee record has been deleted.!!");
+            setMessage("department record has been deleted.!!");
             setTimeout(() => {
                 location.reload();
             }, 1500);
@@ -23,6 +23,7 @@ const EmployeeDeleteModal = ({modalId}) => {
             }, 1500);
         });
     }
+
   return (
     <div className="modal fade" id={`deleteModal${modalId}`} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog">
@@ -33,10 +34,10 @@ const EmployeeDeleteModal = ({modalId}) => {
             </div>
             <div className="modal-body">
                 <Alerts message={message} type={error}/>
-                <p>Are you sure you want to delete this Employee?</p>
+                <p>Are you sure you want to delete this Department?</p>
                 <p>This action can not be undone!!</p>
                 <p>
-                    <strong>Employee to be deleted -- id: </strong> {modalId}
+                    <strong>Department to be deleted -- id: </strong> {modalId}
                 </p>
             </div>
             <div className="modal-footer">
@@ -51,4 +52,4 @@ const EmployeeDeleteModal = ({modalId}) => {
   )
 }
 
-export default EmployeeDeleteModal
+export default DepartmentDeleteModal
