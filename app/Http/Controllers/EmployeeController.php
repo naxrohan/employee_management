@@ -6,6 +6,7 @@ use Log;
 use Exception;
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use App\Http\Requests\EmployeeStoreRequest;
 
 class EmployeeController extends Controller
 {
@@ -41,7 +42,7 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EmployeeStoreRequest $request)
     {
         $newValues = [
             'first_name' => $request->get('first_name'),
@@ -50,6 +51,10 @@ class EmployeeController extends Controller
             'address' => $request->get('address'),
             'zip_code' => $request->get('zip_code'),
             'birthdate' => $request->get('birthdate'),
+            'department_id' => $request->get('department_id'),
+            'country_id' => $request->get('country_id'),
+            'state_id' => $request->get('state_id'),
+            'city_id' => $request->get('city_id'),
         ];
         try {
             Employee::create($newValues);
@@ -95,7 +100,7 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EmployeeStoreRequest $request, $id)
     {
         try {
             $updatedValues = [
@@ -105,6 +110,10 @@ class EmployeeController extends Controller
                 'address' => $request->get('address'),
                 'zip_code' => $request->get('zip_code'),
                 'birthdate' => $request->get('birthdate'),
+                'department_id' => $request->get('department_id'),
+                'country_id' => $request->get('country_id'),
+                'state_id' => $request->get('state_id'),
+                'city_id' => $request->get('city_id'),
             ];
 
             Employee::where('id',$id)->update($updatedValues);

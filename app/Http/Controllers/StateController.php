@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\State;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use App\Http\Requests\StateStoreRequest;
 
 class StateController extends Controller
 {
@@ -40,7 +41,7 @@ class StateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StateStoreRequest $request)
     {
         $newValues = [
             'country_id' => $request->get('country_id'),
@@ -90,7 +91,7 @@ class StateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StateStoreRequest $request, $id)
     {
         try {
             $updatedValues = [
