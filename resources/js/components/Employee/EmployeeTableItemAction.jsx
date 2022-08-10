@@ -11,7 +11,11 @@ const EmployeeTableItemAction = ({employeeId}) => {
         last_name: 'null',
         address: 'null',
         zip_code: 'null',
-        birthdate: 'null'
+        birthdate: 'null',
+        department_id: 'null',
+        country_id: 'null',
+        state_id: 'null',
+        city_id: 'null'
     })
     
     const getEmployeeData = async(id) => {

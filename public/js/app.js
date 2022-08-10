@@ -8122,7 +8122,11 @@ var EmployeeTableItemAction = function EmployeeTableItemAction(_ref) {
     last_name: 'null',
     address: 'null',
     zip_code: 'null',
-    birthdate: 'null'
+    birthdate: 'null',
+    department_id: 'null',
+    country_id: 'null',
+    state_id: 'null',
+    city_id: 'null'
   }),
       _useState2 = _slicedToArray(_useState, 2),
       empData = _useState2[0],
@@ -8891,6 +8895,70 @@ var EmployeeEditModal = function EmployeeEditModal(_ref) {
               onChange: handleInputChange,
               value: employeeDetails.birthdate
             })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "input-group mb-3",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+              className: "input-group-text",
+              id: "basic-addon1",
+              children: "Department"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+              type: "text",
+              className: "form-control",
+              placeholder: "department_id",
+              "aria-label": "department_id",
+              "aria-describedby": "basic-addon1",
+              name: "department_id",
+              onChange: handleInputChange,
+              value: employeeDetails.department_id
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "input-group mb-3",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+              className: "input-group-text",
+              id: "basic-addon1",
+              children: "Country"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+              type: "text",
+              className: "form-control",
+              placeholder: "country_id",
+              "aria-label": "country_id",
+              "aria-describedby": "basic-addon1",
+              name: "country_id",
+              onChange: handleInputChange,
+              value: employeeDetails.country_id
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "input-group mb-3",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+              className: "input-group-text",
+              id: "basic-addon1",
+              children: "State"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+              type: "text",
+              className: "form-control",
+              placeholder: "state_id",
+              "aria-label": "state_id",
+              "aria-describedby": "basic-addon1",
+              name: "state_id",
+              onChange: handleInputChange,
+              value: employeeDetails.state_id
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+            className: "input-group mb-3",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+              className: "input-group-text",
+              id: "basic-addon1",
+              children: "City"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+              type: "text",
+              className: "form-control",
+              placeholder: "city_id",
+              "aria-label": "city_id",
+              "aria-describedby": "basic-addon1",
+              name: "city_id",
+              onChange: handleInputChange,
+              value: employeeDetails.city_id
+            })]
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
           className: "modal-footer",
@@ -8975,7 +9043,15 @@ var EmployeeViewModal = function EmployeeViewModal(_ref) {
             children: "Zipcode:"
           }), modaData.zip_code, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
             children: "birthdate:"
-          }), modaData.birthdate, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("hr", {})]
+          }), modaData.birthdate, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+            children: "department_id:"
+          }), modaData.department_id, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+            children: "country_id:"
+          }), modaData.country_id, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+            children: "state_id:"
+          }), modaData.state_id, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+            children: "city_id:"
+          }), modaData.city_id, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("hr", {})]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
           className: "modal-footer",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {

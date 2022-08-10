@@ -17,6 +17,10 @@ const EmployeeViewModal = ({ modaData, modalId }) => {
               <strong>Address:</strong>{modaData.address}<hr/>
               <strong>Zipcode:</strong>{modaData.zip_code}<hr/>
               <strong>birthdate:</strong>{modaData.birthdate}<hr/>
+              <strong>department_id:</strong>{modaData.department_id}<hr/>
+              <strong>country_id:</strong>{modaData.country_id}<hr/>
+              <strong>state_id:</strong>{modaData.state_id}<hr/>
+              <strong>city_id:</strong>{modaData.city_id}<hr/>
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>

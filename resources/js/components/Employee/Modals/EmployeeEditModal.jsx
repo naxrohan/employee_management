@@ -127,6 +127,50 @@ const EmployeeEditModal = ({ modaData, modalId }) => {
                   onChange={handleInputChange}
                   value={employeeDetails.birthdate} />
               </div>
+
+              <div className="input-group mb-3">
+                <span className="input-group-text" id="basic-addon1">Department</span>
+                <input type="text" className="form-control" 
+                  placeholder="department_id" 
+                  aria-label="department_id" 
+                  aria-describedby="basic-addon1" 
+                  name='department_id'
+                  onChange={handleInputChange}
+                  value={employeeDetails.department_id} />
+              </div>
+
+              <div className="input-group mb-3">
+                <span className="input-group-text" id="basic-addon1">Country</span>
+                <input type="text" className="form-control" 
+                  placeholder="country_id" 
+                  aria-label="country_id" 
+                  aria-describedby="basic-addon1" 
+                  name='country_id'
+                  onChange={handleInputChange}
+                  value={employeeDetails.country_id} />
+              </div>
+
+              <div className="input-group mb-3">
+                <span className="input-group-text" id="basic-addon1">State</span>
+                <input type="text" className="form-control" 
+                  placeholder="state_id" 
+                  aria-label="state_id" 
+                  aria-describedby="basic-addon1" 
+                  name='state_id'
+                  onChange={handleInputChange}
+                  value={employeeDetails.state_id} />
+              </div>
+
+              <div className="input-group mb-3">
+                <span className="input-group-text" id="basic-addon1">City</span>
+                <input type="text" className="form-control" 
+                  placeholder="city_id" 
+                  aria-label="city_id" 
+                  aria-describedby="basic-addon1" 
+                  name='city_id'
+                  onChange={handleInputChange}
+                  value={employeeDetails.city_id} />
+              </div>
               
             </div>
 
