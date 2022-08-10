@@ -16,12 +16,20 @@ const EmployeeTableItemAction = ({employeeId}) => {
         country_id: 'null',
         state_id: 'null',
         city_id: 'null'
-    })
+    });
+    const [deptData, setDeptData] = useState([]);
+    const [countryData, setCountryData] = useState([]);
+    const [stateData, setStateData] = useState([]);
+    const [cityData, setCityData] = useState([]);
     
     const getEmployeeData = async(id) => {
         try {
-            const data = await axios.get(`/employee/${id}`).then((resp) =>{
-              setEmpData(resp.data);
+            const data = await axios.get(`/api/employee/${id}`).then((resp) =>{
+              setEmpData(resp.data.employee);
+              setDeptData(resp.data.departments);
+              setCountryData(resp.data.countries);
+              setStateData(resp.data.states);
+              setCityData(resp.data.cities);
             })
           } catch (error) {
             console.log(error)
@@ -50,7 +58,8 @@ const EmployeeTableItemAction = ({employeeId}) => {
                 onClick={() => getEmployeeData(employeeId)}>Edit</button>
             <EmployeeEditModal 
                 modaData={empData} 
-                modalId={employeeId} />
+                modalId={employeeId}
+                otherDependantValues={[deptData,countryData,stateData,cityData]} />
 
             <button 
                 className="btn btn-warning btn-sm" 

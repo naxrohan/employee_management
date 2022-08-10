@@ -24,7 +24,7 @@ const EmployeeCreateModal = () => {
     const handleUpdate = async (e) => {
     e.preventDefault();
 
-      const data = await axios.post(`/employee`,{
+      const data = await axios.post(`/api/employee`,{
         ...employeeDetails
       }).then((resp) =>{
         setEmpData(resp.data);

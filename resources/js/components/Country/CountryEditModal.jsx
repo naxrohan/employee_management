@@ -20,7 +20,7 @@ const CountryEditModal = ({ modalId, modalData }) => {
     const handleUpdate = async (e) => {
         e.preventDefault();
 
-        const data = await axios.put(`/country/${modalId}`, {
+        const data = await axios.put(`/api/country/${modalId}`, {
             ...CountryDetails
         }).then((resp) => {
             setEmpData(resp.data);
@@ -41,7 +41,7 @@ const CountryEditModal = ({ modalId, modalData }) => {
     }
 
     const handleDelete = async() => {
-        const removeUser = await axios.delete(`/country/${modalId}`)
+        const removeUser = await axios.delete(`/api/country/${modalId}`)
         .then((resp) => {
             setError(false);
             setMessage("Country record has been deleted.!!");

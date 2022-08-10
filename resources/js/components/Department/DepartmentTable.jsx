@@ -7,7 +7,7 @@ const DepartmentTable = () => {
   
   const getDepartmentData = async() => {
     try {
-      const data = await axios.get('/department').then((resp) =>{
+      const data = await axios.get('/api/department').then((resp) =>{
         setDepartmentData(resp.data);
       })
     } catch (error) {

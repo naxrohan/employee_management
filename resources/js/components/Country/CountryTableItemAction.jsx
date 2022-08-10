@@ -12,7 +12,7 @@ const CountryTableItemAction = ({countryId}) => {
 
 const getCountryData = async(id) => {
     try {
-        const data = await axios.get(`/country/${id}`).then((resp) =>{
+        const data = await axios.get(`/api/country/${id}`).then((resp) =>{
           setCountryData(resp.data);
         })
       } catch (error) {

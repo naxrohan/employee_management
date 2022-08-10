@@ -7,7 +7,7 @@ const EmployeeTable = () => {
   
   const getEmployeeData = async() => {
     try {
-      const data = await axios.get('/employee').then((resp) =>{
+      const data = await axios.get('/api/employee').then((resp) =>{
         setEmployeeData(resp.data);
       })
     } catch (error) {

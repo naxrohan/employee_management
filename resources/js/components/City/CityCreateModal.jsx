@@ -14,7 +14,7 @@ const [message, setMessage] = useState('Message!!');
 
 const getStatesData = async () => {
   try {
-    const data = await axios.get('/state').then((resp) => {
+    const data = await axios.get('/api/state').then((resp) => {
       setStatesData(resp.data);
     })
   } catch (error) {
@@ -35,7 +35,7 @@ const handleInputChange = (e) => {
 const handleUpdate = async (e) => {
 e.preventDefault();
 
-  const data = await axios.post(`/city`,{
+  const data = await axios.post(`/api/city`,{
     ...cityDetails
   }).then((resp) =>{
     setCityDetails(resp.data);

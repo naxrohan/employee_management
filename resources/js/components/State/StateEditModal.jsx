@@ -21,7 +21,7 @@ const StateEditModal = ({modalId, modalData, countData}) => {
     const handleUpdate = async (e) => {
         e.preventDefault();
 
-        const data = await axios.put(`/state/${modalId}`, {
+        const data = await axios.put(`/api/state/${modalId}`, {
             ...stateDetails
         }).then((resp) => {
             setStateData(resp.data);
@@ -42,7 +42,7 @@ const StateEditModal = ({modalId, modalData, countData}) => {
     }
 
     const handleDelete = async() => {
-        const removeUser = await axios.delete(`/state/${modalId}`)
+        const removeUser = await axios.delete(`/api/state/${modalId}`)
         .then((resp) => {
             setError(false);
             setMessage("State record has been deleted.!!");

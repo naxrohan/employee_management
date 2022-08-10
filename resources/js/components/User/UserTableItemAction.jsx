@@ -5,7 +5,7 @@ const UserTableItemAction = ({ userId }) => {
 
     const getUserData = async (id) => {
         try {
-            const data = await axios.get(`/users/${id}`).then((resp) =>{
+            const data = await axios.get(`/api/users/${id}`).then((resp) =>{
                 // setEmpData(resp.data);
                 console.log(resp.data)
             })

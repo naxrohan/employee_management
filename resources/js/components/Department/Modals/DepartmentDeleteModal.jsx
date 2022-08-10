@@ -7,7 +7,7 @@ const DepartmentDeleteModal = ({modalId}) => {
     const [message, setMessage] = useState('Message!!');
 
     const handleDelete = async() => {
-        const removedept = await axios.delete(`/department/${modalId}`)
+        const removedept = await axios.delete(`/api/department/${modalId}`)
         .then((resp) => {
             setError(false);
             setMessage("department record has been deleted.!!");

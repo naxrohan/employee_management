@@ -7,7 +7,7 @@ const CityTable = () => {
 
     const getCityData = async () => {
         try {
-            const data = await axios.get('/city').then((resp) => {
+            const data = await axios.get('/api/city').then((resp) => {
                 setCityData(resp.data);
             })
         } catch (error) {

@@ -7,7 +7,7 @@ const CountryTable = () => {
 
     const getCountryData = async () => {
         try {
-            const data = await axios.get('/country').then((resp) => {
+            const data = await axios.get('/api/country').then((resp) => {
                 setCountryData(resp.data);
             })
         } catch (error) {

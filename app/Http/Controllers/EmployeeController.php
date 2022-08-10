@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Log;
 use Exception;
+use App\Models\City;
+use App\Models\State;
+use App\Models\Country;
 use App\Models\Employee;
+use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Http\Requests\EmployeeStoreRequest;
 
@@ -75,7 +79,13 @@ class EmployeeController extends Controller
     public function show(Employee $employee)
     {
         try {
-            return response()->json($employee);
+            return response()->json([
+                'employee' => $employee,
+                'departments' => Department::all(),
+                'countries' => Country::all(),
+                'states' => State::all(),
+                'cities' => City::all()
+            ]);
         } catch (Exception $e) {
             Log::error($e);
             return response()->json( "Fetch Failure", 500);

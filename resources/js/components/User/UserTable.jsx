@@ -6,7 +6,7 @@ const UserTable = () => {
   
   const getUserData = async() => {
     try {
-      const data = await axios.get('/users').then((resp) =>{
+      const data = await axios.get('/api/users').then((resp) =>{
         setUserData(resp.data);
       })
     } catch (error) {

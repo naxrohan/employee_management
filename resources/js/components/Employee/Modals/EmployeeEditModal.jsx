@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Alerts from '../../Alerts';
 
-const EmployeeEditModal = ({ modaData, modalId }) => {
+const EmployeeEditModal = ({ modaData, modalId , otherDependantValues}) => {
   const [employeeDetails, setEmpData] = useState(modaData);
 
   const [error, setError] = useState(null);
@@ -20,7 +20,7 @@ const EmployeeEditModal = ({ modaData, modalId }) => {
   const handleUpdate = async(e) => {
     e.preventDefault();
     
-      const data = await axios.put(`/employee/${modalId}`,{
+      const data = await axios.put(`/api/employee/${modalId}`,{
         ...employeeDetails
       }).then((resp) =>{
         setEmpData(resp.data);
@@ -129,47 +129,63 @@ const EmployeeEditModal = ({ modaData, modalId }) => {
               </div>
 
               <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1">Department</span>
-                <input type="text" className="form-control" 
-                  placeholder="department_id" 
-                  aria-label="department_id" 
-                  aria-describedby="basic-addon1" 
+                <span className="input-group-text" id="basic-addon1x">Department</span>
+                <select className="form-control" 
                   name='department_id'
-                  onChange={handleInputChange}
-                  value={employeeDetails.department_id} />
+                  onChange={handleInputChange} >
+                    <option>--select department --</option>
+                  { otherDependantValues[0].map( (item, key) => (
+                    <option 
+                      key={key} 
+                      selected={item.id === employeeDetails.department_id ? 'selected' : ''}
+                      value={item.id}>{item.name}</option>
+                  ) ) }
+                </select>
               </div>
 
               <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1">Country</span>
-                <input type="text" className="form-control" 
-                  placeholder="country_id" 
-                  aria-label="country_id" 
-                  aria-describedby="basic-addon1" 
+                <span className="input-group-text" id="basic-addon1x">Country</span>
+                <select className="form-control" 
                   name='country_id'
-                  onChange={handleInputChange}
-                  value={employeeDetails.country_id} />
+                  onChange={handleInputChange} >
+                    <option>--select country --</option>
+                  { otherDependantValues[1].map( (item, key) => (
+                    <option 
+                      key={key} 
+                      selected={item.id === employeeDetails.country_id ? 'selected' : ''}
+                      value={item.id}>{item.name}</option>
+                  ) ) }
+                </select>
               </div>
 
               <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1">State</span>
-                <input type="text" className="form-control" 
-                  placeholder="state_id" 
-                  aria-label="state_id" 
-                  aria-describedby="basic-addon1" 
+                <span className="input-group-text" id="basic-addon1x">State</span>
+                <select className="form-control" 
                   name='state_id'
-                  onChange={handleInputChange}
-                  value={employeeDetails.state_id} />
+                  onChange={handleInputChange} >
+                    <option>--select state --</option>
+                  { otherDependantValues[2].map( (item, key) => (
+                    <option 
+                      key={key} 
+                      selected={item.id === employeeDetails.state_id ? 'selected' : ''}
+                      value={item.id}>{item.name}</option>
+                  ) ) }
+                </select>
               </div>
 
               <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1">City</span>
-                <input type="text" className="form-control" 
-                  placeholder="city_id" 
-                  aria-label="city_id" 
-                  aria-describedby="basic-addon1" 
+                <span className="input-group-text" id="basic-addon1x">City</span>
+                <select className="form-control" 
                   name='city_id'
-                  onChange={handleInputChange}
-                  value={employeeDetails.city_id} />
+                  onChange={handleInputChange} >
+                    <option>--select city --</option>
+                  { otherDependantValues[3].map( (item, key) => (
+                    <option 
+                      key={key} 
+                      selected={item.id === employeeDetails.city_id ? 'selected' : ''}
+                      value={item.id}>{item.name}</option>
+                  ) ) }
+                </select>
               </div>
               
             </div>

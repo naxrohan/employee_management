@@ -15,7 +15,7 @@ const [message, setMessage] = useState('Message!!');
 
 const getCountryData = async () => {
   try {
-      const data = await axios.get('/country').then((resp) => {
+      const data = await axios.get('/api/country').then((resp) => {
           setCountryData(resp.data);
       })
   } catch (error) {
@@ -37,7 +37,7 @@ const handleInputChange = (e) => {
 const handleUpdate = async (e) => {
 e.preventDefault();
 
-  const data = await axios.post(`/state`,{
+  const data = await axios.post(`/api/state`,{
     ...stateDetails
   }).then((resp) =>{
     setStateData(resp.data);

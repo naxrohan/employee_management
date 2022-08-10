@@ -7,7 +7,7 @@ const StateTable = () => {
 
     const getStatesData = async () => {
         try {
-            const data = await axios.get('/state').then((resp) => {
+            const data = await axios.get('/api/state').then((resp) => {
                 setStatesData(resp.data);
             })
         } catch (error) {

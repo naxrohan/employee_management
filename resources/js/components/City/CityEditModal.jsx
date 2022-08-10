@@ -20,7 +20,7 @@ const CityEditModal = ({modalData, modalId, stateData}) => {
     const handleUpdate = async (e) => {
         e.preventDefault();
 
-        const data = await axios.put(`/city/${modalId}`, {
+        const data = await axios.put(`/api/city/${modalId}`, {
             ...cityDetails
         }).then((resp) => {
             setCityData(resp.data);
@@ -41,7 +41,7 @@ const CityEditModal = ({modalData, modalId, stateData}) => {
     }
 
     const handleDelete = async() => {
-        const removeUser = await axios.delete(`/city/${modalId}`)
+        const removeUser = await axios.delete(`/api/city/${modalId}`)
         .then((resp) => {
             setError(false);
             setMessage("City record has been deleted.!!");

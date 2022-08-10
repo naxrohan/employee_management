@@ -13,7 +13,7 @@ const [countryDetails, setCountryData] = useState([]);
 
 const getStateData = async(id) => {
     try {
-        const data = await axios.get(`/state/${id}`).then((resp) =>{
+        const data = await axios.get(`/api/state/${id}`).then((resp) =>{
           setStateData(resp.data.state);
           setCountryData(resp.data.countries);
         })

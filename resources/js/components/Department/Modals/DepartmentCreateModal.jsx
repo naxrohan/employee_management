@@ -23,7 +23,7 @@ const DepartmentCreateModal = () => {
     const handleUpdate = async (e) => {
         e.preventDefault();
 
-        const data = await axios.post(`/department`, {
+        const data = await axios.post(`/api/department`, {
             ...departmentDetails
         }).then((resp) => {
             setDeptData(resp.data);

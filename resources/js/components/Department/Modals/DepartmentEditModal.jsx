@@ -20,7 +20,7 @@ const DepartmentEditModal = ({ modaData, modalId }) => {
     const handleUpdate = async (e) => {
         e.preventDefault();
 
-        const data = await axios.put(`/department/${modalId}`, {
+        const data = await axios.put(`/api/department/${modalId}`, {
             ...departmentDetails
         }).then((resp) => {
             setDeptData(resp.data);

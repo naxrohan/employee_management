@@ -7,7 +7,7 @@ const EmployeeDeleteModal = ({modalId}) => {
     const [message, setMessage] = useState('Message!!');
 
     const handleDelete = async() => {
-        const removeUser = await axios.delete(`/employee/${modalId}`)
+        const removeUser = await axios.delete(`/api/employee/${modalId}`)
         .then((resp) => {
             setError(false);
             setMessage("Employee record has been deleted.!!");

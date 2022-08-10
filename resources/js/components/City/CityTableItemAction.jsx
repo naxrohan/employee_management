@@ -13,7 +13,7 @@ const [stateDetails, setStateData] = useState([]);
 
 const getCityData = async(id) => {
     try {
-        const data = await axios.get(`/city/${id}`).then((resp) =>{
+        const data = await axios.get(`/api/city/${id}`).then((resp) =>{
           setCityData(resp.data.city);
           setStateData(resp.data.states)
         })

@@ -11,7 +11,7 @@ const DepartmentTableItemAction = ({deptId}) => {
 
   const getDepartmentData = async(id) => {
     try {
-      const data = await axios.get(`/department/${id}`).then((resp) =>{
+      const data = await axios.get(`/api/department/${id}`).then((resp) =>{
         setDeptData(resp.data);
       })
     } catch (error) {

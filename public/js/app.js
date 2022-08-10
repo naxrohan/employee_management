@@ -5480,7 +5480,7 @@ var CityCreateModal = function CityCreateModal() {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return axios.get('/state').then(function (resp) {
+              return axios.get('/api/state').then(function (resp) {
                 setStatesData(resp.data);
               });
 
@@ -5526,7 +5526,7 @@ var CityCreateModal = function CityCreateModal() {
             case 0:
               e.preventDefault();
               _context2.next = 3;
-              return axios.post("/city", _objectSpread({}, cityDetails)).then(function (resp) {
+              return axios.post("/api/city", _objectSpread({}, cityDetails)).then(function (resp) {
                 setCityDetails(resp.data);
                 setError(false);
                 setMessage("New City saved!!");
@@ -5741,7 +5741,7 @@ var CityEditModal = function CityEditModal(_ref) {
             case 0:
               e.preventDefault();
               _context.next = 3;
-              return axios.put("/city/".concat(modalId), _objectSpread({}, cityDetails)).then(function (resp) {
+              return axios.put("/api/city/".concat(modalId), _objectSpread({}, cityDetails)).then(function (resp) {
                 setCityData(resp.data);
                 setError(false);
                 setMessage("Updated saved!!");
@@ -5780,7 +5780,7 @@ var CityEditModal = function CityEditModal(_ref) {
           switch (_context2.prev = _context2.next) {
             case 0:
               _context2.next = 2;
-              return axios["delete"]("/city/".concat(modalId)).then(function (resp) {
+              return axios["delete"]("/api/city/".concat(modalId)).then(function (resp) {
                 setError(false);
                 setMessage("City record has been deleted.!!");
                 setTimeout(function () {
@@ -5979,7 +5979,7 @@ var CityTable = function CityTable() {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/city').then(function (resp) {
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/city').then(function (resp) {
                 setCityData(resp.data);
               });
 
@@ -6124,7 +6124,7 @@ var CityTableItemAction = function CityTableItemAction(_ref) {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default().get("/city/".concat(id)).then(function (resp) {
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/city/".concat(id)).then(function (resp) {
                 setCityData(resp.data.city);
                 setStateData(resp.data.states);
               });
@@ -6343,7 +6343,7 @@ var CountryCreateModal = function CountryCreateModal() {
             case 0:
               e.preventDefault();
               _context.next = 3;
-              return axios.post("/country", _objectSpread({}, countryDetails)).then(function (resp) {
+              return axios.post("/api/country", _objectSpread({}, countryDetails)).then(function (resp) {
                 setEmpData(resp.data);
                 setError(false);
                 setMessage("New Employee saved!!");
@@ -6553,7 +6553,7 @@ var CountryEditModal = function CountryEditModal(_ref) {
             case 0:
               e.preventDefault();
               _context.next = 3;
-              return axios.put("/country/".concat(modalId), _objectSpread({}, CountryDetails)).then(function (resp) {
+              return axios.put("/api/country/".concat(modalId), _objectSpread({}, CountryDetails)).then(function (resp) {
                 setEmpData(resp.data);
                 setError(false);
                 setMessage("Updated saved!!");
@@ -6592,7 +6592,7 @@ var CountryEditModal = function CountryEditModal(_ref) {
           switch (_context2.prev = _context2.next) {
             case 0:
               _context2.next = 2;
-              return axios["delete"]("/country/".concat(modalId)).then(function (resp) {
+              return axios["delete"]("/api/country/".concat(modalId)).then(function (resp) {
                 setError(false);
                 setMessage("Country record has been deleted.!!");
                 setTimeout(function () {
@@ -6787,7 +6787,7 @@ var CountryTable = function CountryTable() {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/country').then(function (resp) {
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/country').then(function (resp) {
                 setCountryData(resp.data);
               });
 
@@ -6927,7 +6927,7 @@ var CountryTableItemAction = function CountryTableItemAction(_ref) {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default().get("/country/".concat(id)).then(function (resp) {
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/country/".concat(id)).then(function (resp) {
                 setCountryData(resp.data);
               });
 
@@ -7120,7 +7120,7 @@ var DepartmentTable = function DepartmentTable() {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/department').then(function (resp) {
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/department').then(function (resp) {
                 setDepartmentData(resp.data);
               });
 
@@ -7250,7 +7250,7 @@ var DepartmentTableItemAction = function DepartmentTableItemAction(_ref) {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return axios.get("/department/".concat(id)).then(function (resp) {
+              return axios.get("/api/department/".concat(id)).then(function (resp) {
                 setDeptData(resp.data);
               });
 
@@ -7411,7 +7411,7 @@ var DepartmentCreateModal = function DepartmentCreateModal() {
             case 0:
               e.preventDefault();
               _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default().post("/department", _objectSpread({}, departmentDetails)).then(function (resp) {
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/department", _objectSpread({}, departmentDetails)).then(function (resp) {
                 setDeptData(resp.data);
                 setError(false);
                 setMessage("Updated saved!!");
@@ -7582,7 +7582,7 @@ var DepartmentDeleteModal = function DepartmentDeleteModal(_ref) {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return axios["delete"]("/department/".concat(modalId)).then(function (resp) {
+              return axios["delete"]("/api/department/".concat(modalId)).then(function (resp) {
                 setError(false);
                 setMessage("department record has been deleted.!!");
                 setTimeout(function () {
@@ -7756,7 +7756,7 @@ var DepartmentEditModal = function DepartmentEditModal(_ref) {
             case 0:
               e.preventDefault();
               _context.next = 3;
-              return axios.put("/department/".concat(modalId), _objectSpread({}, departmentDetails)).then(function (resp) {
+              return axios.put("/api/department/".concat(modalId), _objectSpread({}, departmentDetails)).then(function (resp) {
                 setDeptData(resp.data);
                 setError(false);
                 setMessage("Updated saved!!");
@@ -8040,7 +8040,7 @@ var EmployeeTable = function EmployeeTable() {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/employee').then(function (resp) {
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/employee').then(function (resp) {
                 setEmployeeData(resp.data);
               });
 
@@ -8193,6 +8193,26 @@ var EmployeeTableItemAction = function EmployeeTableItemAction(_ref) {
       empData = _useState2[0],
       setEmpData = _useState2[1];
 
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      deptData = _useState4[0],
+      setDeptData = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState6 = _slicedToArray(_useState5, 2),
+      countryData = _useState6[0],
+      setCountryData = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState8 = _slicedToArray(_useState7, 2),
+      stateData = _useState8[0],
+      setStateData = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState10 = _slicedToArray(_useState9, 2),
+      cityData = _useState10[0],
+      setCityData = _useState10[1];
+
   var getEmployeeData = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(id) {
       var data;
@@ -8202,8 +8222,12 @@ var EmployeeTableItemAction = function EmployeeTableItemAction(_ref) {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return axios.get("/employee/".concat(id)).then(function (resp) {
-                setEmpData(resp.data);
+              return axios.get("/api/employee/".concat(id)).then(function (resp) {
+                setEmpData(resp.data.employee);
+                setDeptData(resp.data.departments);
+                setCountryData(resp.data.countries);
+                setStateData(resp.data.states);
+                setCityData(resp.data.cities);
               });
 
             case 3:
@@ -8258,7 +8282,8 @@ var EmployeeTableItemAction = function EmployeeTableItemAction(_ref) {
       children: "Edit"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Modals_EmployeeEditModal__WEBPACK_IMPORTED_MODULE_2__["default"], {
       modaData: empData,
-      modalId: employeeId
+      modalId: employeeId,
+      otherDependantValues: [deptData, countryData, stateData, cityData]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
       className: "btn btn-warning btn-sm",
       href: "#",
@@ -8361,7 +8386,7 @@ var EmployeeCreateModal = function EmployeeCreateModal() {
             case 0:
               e.preventDefault();
               _context.next = 3;
-              return axios.post("/employee", _objectSpread({}, employeeDetails)).then(function (resp) {
+              return axios.post("/api/employee", _objectSpread({}, employeeDetails)).then(function (resp) {
                 setEmpData(resp.data);
                 setError(false);
                 setMessage("New Employee saved!!");
@@ -8612,7 +8637,7 @@ var EmployeeDeleteModal = function EmployeeDeleteModal(_ref) {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return axios["delete"]("/employee/".concat(modalId)).then(function (resp) {
+              return axios["delete"]("/api/employee/".concat(modalId)).then(function (resp) {
                 setError(false);
                 setMessage("Employee record has been deleted.!!");
                 setTimeout(function () {
@@ -8750,7 +8775,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var EmployeeEditModal = function EmployeeEditModal(_ref) {
   var modaData = _ref.modaData,
-      modalId = _ref.modalId;
+      modalId = _ref.modalId,
+      otherDependantValues = _ref.otherDependantValues;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(modaData),
       _useState2 = _slicedToArray(_useState, 2),
@@ -8786,7 +8812,7 @@ var EmployeeEditModal = function EmployeeEditModal(_ref) {
             case 0:
               e.preventDefault();
               _context.next = 3;
-              return axios.put("/employee/".concat(modalId), _objectSpread({}, employeeDetails)).then(function (resp) {
+              return axios.put("/api/employee/".concat(modalId), _objectSpread({}, employeeDetails)).then(function (resp) {
                 setEmpData(resp.data);
                 setError(false);
                 setMessage("Updated saved!!");
@@ -8960,65 +8986,81 @@ var EmployeeEditModal = function EmployeeEditModal(_ref) {
             className: "input-group mb-3",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
               className: "input-group-text",
-              id: "basic-addon1",
+              id: "basic-addon1x",
               children: "Department"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-              type: "text",
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
               className: "form-control",
-              placeholder: "department_id",
-              "aria-label": "department_id",
-              "aria-describedby": "basic-addon1",
               name: "department_id",
               onChange: handleInputChange,
-              value: employeeDetails.department_id
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                children: "--select department --"
+              }), otherDependantValues[0].map(function (item, key) {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                  selected: item.id === employeeDetails.department_id ? 'selected' : '',
+                  value: item.id,
+                  children: item.name
+                }, key);
+              })]
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
             className: "input-group mb-3",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
               className: "input-group-text",
-              id: "basic-addon1",
+              id: "basic-addon1x",
               children: "Country"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-              type: "text",
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
               className: "form-control",
-              placeholder: "country_id",
-              "aria-label": "country_id",
-              "aria-describedby": "basic-addon1",
               name: "country_id",
               onChange: handleInputChange,
-              value: employeeDetails.country_id
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                children: "--select country --"
+              }), otherDependantValues[1].map(function (item, key) {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                  selected: item.id === employeeDetails.country_id ? 'selected' : '',
+                  value: item.id,
+                  children: item.name
+                }, key);
+              })]
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
             className: "input-group mb-3",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
               className: "input-group-text",
-              id: "basic-addon1",
+              id: "basic-addon1x",
               children: "State"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-              type: "text",
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
               className: "form-control",
-              placeholder: "state_id",
-              "aria-label": "state_id",
-              "aria-describedby": "basic-addon1",
               name: "state_id",
               onChange: handleInputChange,
-              value: employeeDetails.state_id
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                children: "--select state --"
+              }), otherDependantValues[2].map(function (item, key) {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                  selected: item.id === employeeDetails.state_id ? 'selected' : '',
+                  value: item.id,
+                  children: item.name
+                }, key);
+              })]
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
             className: "input-group mb-3",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
               className: "input-group-text",
-              id: "basic-addon1",
+              id: "basic-addon1x",
               children: "City"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-              type: "text",
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
               className: "form-control",
-              placeholder: "city_id",
-              "aria-label": "city_id",
-              "aria-describedby": "basic-addon1",
               name: "city_id",
               onChange: handleInputChange,
-              value: employeeDetails.city_id
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                children: "--select city --"
+              }), otherDependantValues[3].map(function (item, key) {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                  selected: item.id === employeeDetails.city_id ? 'selected' : '',
+                  value: item.id,
+                  children: item.name
+                }, key);
+              })]
             })]
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
@@ -9278,7 +9320,7 @@ var StateCreateModal = function StateCreateModal() {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/country').then(function (resp) {
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/country').then(function (resp) {
                 setCountryData(resp.data);
               });
 
@@ -9324,7 +9366,7 @@ var StateCreateModal = function StateCreateModal() {
             case 0:
               e.preventDefault();
               _context2.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default().post("/state", _objectSpread({}, stateDetails)).then(function (resp) {
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/state", _objectSpread({}, stateDetails)).then(function (resp) {
                 setStateData(resp.data);
                 setError(false);
                 setMessage("New State saved!!");
@@ -9538,7 +9580,7 @@ var StateEditModal = function StateEditModal(_ref) {
             case 0:
               e.preventDefault();
               _context.next = 3;
-              return axios.put("/state/".concat(modalId), _objectSpread({}, stateDetails)).then(function (resp) {
+              return axios.put("/api/state/".concat(modalId), _objectSpread({}, stateDetails)).then(function (resp) {
                 setStateData(resp.data);
                 setError(false);
                 setMessage("Updated saved!!");
@@ -9577,7 +9619,7 @@ var StateEditModal = function StateEditModal(_ref) {
           switch (_context2.prev = _context2.next) {
             case 0:
               _context2.next = 2;
-              return axios["delete"]("/state/".concat(modalId)).then(function (resp) {
+              return axios["delete"]("/api/state/".concat(modalId)).then(function (resp) {
                 setError(false);
                 setMessage("State record has been deleted.!!");
                 setTimeout(function () {
@@ -9776,7 +9818,7 @@ var StateTable = function StateTable() {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/state').then(function (resp) {
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/state').then(function (resp) {
                 setStatesData(resp.data);
               });
 
@@ -9921,7 +9963,7 @@ var StateTableItemAction = function StateTableItemAction(_ref) {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default().get("/state/".concat(id)).then(function (resp) {
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/state/".concat(id)).then(function (resp) {
                 setStateData(resp.data.state);
                 setCountryData(resp.data.countries);
               });
@@ -10155,7 +10197,7 @@ var UserTable = function UserTable() {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return axios.get('/users').then(function (resp) {
+              return axios.get('/api/users').then(function (resp) {
                 setUserData(resp.data);
               });
 
@@ -10280,7 +10322,7 @@ var UserTableItemAction = function UserTableItemAction(_ref) {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_0___default().get("/users/".concat(id)).then(function (resp) {
+              return axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/users/".concat(id)).then(function (resp) {
                 // setEmpData(resp.data);
                 console.log(resp.data);
               });
