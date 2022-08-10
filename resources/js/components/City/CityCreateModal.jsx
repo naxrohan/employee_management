@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Alerts from '../Alerts';
 
 const CityCreateModal = () => {
@@ -7,9 +7,24 @@ const CityCreateModal = () => {
     state_id: '',
     name: '',
 });
+const [statesData, setStatesData] = useState([])
 
 const [error, setError] = useState(null);
 const [message, setMessage] = useState('Message!!');
+
+const getStatesData = async () => {
+  try {
+    const data = await axios.get('/state').then((resp) => {
+      setStatesData(resp.data);
+    })
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+useEffect(() => {
+  getStatesData();
+}, [])
 
 const handleInputChange = (e) => {
     setCityDetails(prev => {
@@ -63,16 +78,20 @@ e.preventDefault();
             <div className="modal-body">
             
               <Alerts message={message} type={error}/>
-            
+
               <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1">State Id</span>
-                <input type="text" className="form-control" 
-                  placeholder="State Id" 
-                  aria-label="State Id" 
-                  aria-describedby="basic-addon1" 
+                <span className="input-group-text" id="basic-addon1x">State Name</span>
+                <select className="form-control" 
                   name='state_id'
-                  onChange={handleInputChange}
-                  value={cityDetails.state_id} />
+                  onChange={handleInputChange} >
+                    <option>--select state --</option>
+                  { statesData.map( (item, key) => (
+                    <option 
+                      key={key} 
+                      selected={item.id === cityDetails.state_id ? 'selected' : ''}
+                      value={item.id}>{item.name}</option>
+                  ) ) }
+                </select>
               </div>
 
               <div className="input-group mb-3">

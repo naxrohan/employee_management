@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\State;
+use App\Models\Country;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Requests\StateStoreRequest;
@@ -66,7 +67,12 @@ class StateController extends Controller
     public function show(State $state)
     {
         try {
-            return response()->json($state);
+            $countries = Country::all();
+
+            return response()->json([
+                'state' => $state,
+                'countries' => $countries
+            ]);
         } catch (Exception $e) {
             Log::error($e);
             return response()->json( "Fetch Failure", 500);

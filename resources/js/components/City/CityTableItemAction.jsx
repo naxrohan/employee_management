@@ -8,12 +8,14 @@ const CityTableItemAction = ({cityId}) => {
     id: 0,
     country_code: 'null',
     name: 'null',
-})
+});
+const [stateDetails, setStateData] = useState([]);
 
 const getCityData = async(id) => {
     try {
         const data = await axios.get(`/city/${id}`).then((resp) =>{
-          setCityData(resp.data);
+          setCityData(resp.data.city);
+          setStateData(resp.data.states)
         })
       } catch (error) {
         console.log(error)
@@ -38,7 +40,7 @@ const getCityData = async(id) => {
                 data-bs-toggle="modal" 
                 data-bs-target={`#cityEditModal${cityId}`}
                 onClick={() => getCityData(cityId)}>Edit</button>
-              <CityEditModal modalId={cityId} modalData={cityData} />
+              <CityEditModal modalId={cityId} modalData={cityData} stateData={stateDetails}/>
             
         </div>
     </div>

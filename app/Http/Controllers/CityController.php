@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\City;
+use App\Models\State;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Requests\CityStoreRequest;
@@ -66,7 +67,8 @@ class CityController extends Controller
     public function show(City $city)
     {
         try {
-            return response()->json($city);
+            $states = State::all();
+            return response()->json(['city' => $city, 'states' => $states]);
         } catch (Exception $e) {
             Log::error($e);
             return response()->json( "Fetch Failure", 500);

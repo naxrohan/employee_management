@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\State;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class City extends Model
 {
@@ -13,4 +14,8 @@ class City extends Model
         'state_id',
         'name'
     ];
+
+    public function state() {
+        return $this->belongsTo(State::class);
+    }
 }

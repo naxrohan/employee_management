@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Alerts from '../Alerts';
 
-const StateEditModal = ({modalId, modalData}) => {
-    const [stateDetails, setStateData] = useState(modalData);
+const StateEditModal = ({modalId, modalData, countData}) => {
+  
+  const [stateDetails, setStateData] = useState(modalData);
 
     const [error, setError] = useState(null);
     const [message, setMessage] = useState('Message!!');
@@ -62,7 +63,7 @@ const StateEditModal = ({modalId, modalData}) => {
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">State Details:</h5>
+              <h5 className="modal-title" id="exampleModalLabel">State Detail:</h5>
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             
@@ -78,16 +79,20 @@ const StateEditModal = ({modalId, modalData}) => {
                   aria-describedby="basic-addon1" 
                   value={stateDetails.id} disabled readOnly/>
               </div>
-            
+
               <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1">country id</span>
-                <input type="text" className="form-control" 
-                  placeholder="Country code" 
-                  aria-label="Country code" 
-                  aria-describedby="basic-addon1" 
+                <span className="input-group-text" id="basic-addon1x">Country Name</span>
+                <select className="form-control" 
                   name='country_id'
-                  onChange={handleInputChange}
-                  value={stateDetails.country_id} />
+                  onChange={handleInputChange} >
+                    <option>--select country --</option>
+                  { countData.map( (item, key) => (
+                    <option 
+                      key={key} 
+                      selected={item.id === stateDetails.country_id ? 'selected' : ''}
+                      value={item.id}>{item.name}</option>
+                  ) ) }
+                </select>
               </div>
 
               <div className="input-group mb-3">

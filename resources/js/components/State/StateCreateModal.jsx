@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Alerts from '../Alerts';
 
 const StateCreateModal = () => {
@@ -8,9 +8,25 @@ const StateCreateModal = () => {
     country_id: '',
     name: '',
 });
+const [countryData, setCountryData] = useState([])
 
 const [error, setError] = useState(null);
 const [message, setMessage] = useState('Message!!');
+
+const getCountryData = async () => {
+  try {
+      const data = await axios.get('/country').then((resp) => {
+          setCountryData(resp.data);
+      })
+  } catch (error) {
+      console.log(error)
+  }
+}
+
+useEffect(() => {
+  getCountryData();
+},[])
+
 
 const handleInputChange = (e) => {
     setStateData(prev => {
@@ -64,16 +80,19 @@ e.preventDefault();
             <div className="modal-body">
             
               <Alerts message={message} type={error}/>
-            
+
               <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1">Country Id</span>
-                <input type="text" className="form-control" 
-                  placeholder="Country Id" 
-                  aria-label="Country Id" 
-                  aria-describedby="basic-addon1" 
+                <span className="input-group-text" id="basic-addon1x">Country Name</span>
+                <select className="form-control" 
                   name='country_id'
-                  onChange={handleInputChange}
-                  value={stateDetails.country_id} />
+                  onChange={handleInputChange} >
+                    <option>--select country --</option>
+                  { countryData.map( (item, key) => (
+                    <option 
+                      key={key} 
+                      value={item.id}>{item.name}</option>
+                  ) ) }
+                </select>
               </div>
 
               <div className="input-group mb-3">
