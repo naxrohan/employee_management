@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +21,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/user_manage', [App\Http\Controllers\HomeController::class, 'user'])->name('user_manage');
-Route::get('/department_manage', [App\Http\Controllers\HomeController::class, 'department'])->name('department_manage');
-Route::get('/country_state_city', [App\Http\Controllers\HomeController::class, 'country_state_city'])->name('country_state_city');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/user_manage', [HomeController::class, 'user'])->name('user_manage');
+Route::get('/department_manage', [HomeController::class, 'department'])->name('department_manage');
+Route::get('/country_state_city', [HomeController::class, 'country_state_city'])->name('country_state_city');
+
+
+Route::get('/upload', [UploadController::class, 'index'])->name('uploadPage');
+Route::get('/progress', [UploadController::class, 'progress'])->name('progressPage');
+
+Route::post('/upload/file', [UploadController::class, 'processFile'])->name('processFile');
+Route::get('/upload/progress', [UploadController::class,'progress_data'])->name('uploadProgress');
+Route::get('/upload/cancel', [UploadController::class,'progress_cancel'])->name('uploadCancel');
