@@ -49,6 +49,13 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link " href="{{ route('country_state_city') }}">{{ __('Country, State & City') }}</a>    
                         </li>
+                        
+                        <li class="nav-item dropdown">
+                            <a class="nav-link " href="{{ route('uploadPage') }}">{{ __('Upload') }}</a>    
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link " href="{{ route('progressPage') }}">{{ __('Progress') }}</a>    
+                        </li>
                         @endauth
                     </ul>
 
