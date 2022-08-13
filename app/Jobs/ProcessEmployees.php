@@ -33,6 +33,9 @@ class ProcessEmployees implements ShouldQueue
      */
     public function handle()
     {
+        if ($this->batch()->cancelled()) {
+            return;
+        }
 
         foreach ($this->employeeData as $employeeRow){
             

@@ -17,7 +17,6 @@ use function view;
 class UploadController extends Controller
 {
     private $batchSize = 200;
-    private $batch = null;
     /**
      * Index, file upload form
      */
@@ -46,7 +45,7 @@ class UploadController extends Controller
                 $header = array_map(function($item){ return trim($item,"'"); }, $header);
                 $dataFromCsv = array_chunk($records, $this->batchSize);
               
-                $this->batch = Bus::batch([])->name($fileName)->dispatch();
+                $batch = Bus::batch([])->name($fileName)->dispatch();
                 
                 foreach ($dataFromCsv as $index => $dataCsv)
                 {
@@ -56,12 +55,12 @@ class UploadController extends Controller
                         $finalJobData[$index][] = array_combine($header, $data);
                     }
                     
-                    $this->batch->add(new ProcessEmployees($finalJobData[$index]));
+                    $batch->add(new ProcessEmployees($finalJobData[$index]));
                     //ProcessEmployees::dispatch($finalJobData[$index]);
                 }
-                session()->put( 'lastBatchId' , $this->batch->id);
+                session()->put( 'lastBatchId' , $batch->id);
                 
-                return redirect( '/progress?id='. $this->batch->id );
+                return redirect( '/progress?id='. $batch->id );
                 
             }
         } catch (Exception $e) {
@@ -93,23 +92,24 @@ class UploadController extends Controller
     }
 
     public function progress_cancel(Request $request){
-        // try{
+         try{
             $batchId = $request->id ?? session()->get('lastBatchId');
-
+            
             if(trim($batchId ) != ""){
-
-                if ($this->batch()->cancelled()) {
-                    return response()->json(["already_calcelled", $batchId]);
+                $recoverBatch = Bus::findBatch($batchId);
+                
+                if ($recoverBatch->cancelled()) {
+                    return response()->json(["already_cancelled", $batchId]);
                 }else{
-                    $cancel = $this->batch()->cancel();
-                    return response()->json($cancel);
+                    $cancel = $recoverBatch->cancel();
+                    return response()->json(['ok_cancelled', $batchId]);
                 }
             }else {
                 return response()->json(["error_occured 1", $batchId]);
             }
-        // }catch (Exception $ex) {
-        //     Log::error($ex);
-        //     return response()->json(["error_occured 2", $ex]);
-        // }
+         }catch (Exception $ex) {
+             Log::error($ex);
+             return response()->json(["error_occured 2", $ex]);
+         }
     }
 }
