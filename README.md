@@ -16,9 +16,13 @@
     - Employee import form CSV file created.
     - Import Progress bar
     - Using Laravel Job Queues/Batches
+    - cancel import Job/Batch working
     - tested for 10k records
-    - for 10m, increase releaant php configs
-    - cancel import job/batch working
+    - for 10m records, increase relevant php configs
 
 ### TODO:
 - User edit/delete
+- bulk delete
+- bulk import other records
+- Employee level Login
+    - Employee manage profile
