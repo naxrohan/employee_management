@@ -2,6 +2,7 @@
 
 ## Employee Management CRUD
 - Main Entities for which CRUD is working
+- Custom Laravel Requests, to validate the API inputs
 - Factory & seeders created for below entities
 - UI created using ReactJS & Bootstrap
     - Employee
@@ -26,3 +27,4 @@
 - bulk import other records
 - Employee level Login
     - Employee manage profile
+- Token based authentication for external API Usage.
