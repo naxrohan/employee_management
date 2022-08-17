@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import Alerts from '../../Alerts';
 
 const EmployeeCreateModal = () => {
@@ -9,11 +9,40 @@ const EmployeeCreateModal = () => {
         last_name: '',
         address: '',
         zip_code: '',
-        birthdate: ''
+        birthdate: '',
+        department_id: 1,
+        country_id: 1,
+        state_id: 1,
+        city_id: 1
     });
+    const [deptData, setDeptData] = useState([]);
+    const [countryData, setCountryData] = useState([]);
+    const [stateData, setStateData] = useState([]);
+    const [cityData, setCityData] = useState([]);
+    const [otherDependantValues, setotherDependantValues] = useState([]);
 
     const [error, setError] = useState(null);
     const [message, setMessage] = useState('Message!!');
+
+    const getEmployeeData = async() => {
+      try {
+          const data = await axios.get(`/api/employee/0`).then((resp) =>{
+            setDeptData(resp.data.departments);
+            setCountryData(resp.data.countries);
+            setStateData(resp.data.states);
+            setCityData(resp.data.cities);
+          })
+        } catch (error) {
+          console.log(error)
+        }
+  }
+  useEffect(() => {
+    getEmployeeData();
+  },[]);
+
+  useMemo(() => {
+    setotherDependantValues([deptData,countryData,stateData,cityData]); 
+  },[deptData,countryData,stateData,cityData]);
 
     const handleInputChange = (e) => {
         setEmpData(prev => {
@@ -143,7 +172,6 @@ const EmployeeCreateModal = () => {
                   { otherDependantValues[0].map( (item, key) => (
                     <option 
                       key={key} 
-                      selected={item.id === employeeDetails.department_id ? 'selected' : ''}
                       value={item.id}>{item.name}</option>
                   ) ) }
                 </select>
@@ -158,7 +186,6 @@ const EmployeeCreateModal = () => {
                   { otherDependantValues[1].map( (item, key) => (
                     <option 
                       key={key} 
-                      selected={item.id === employeeDetails.country_id ? 'selected' : ''}
                       value={item.id}>{item.name}</option>
                   ) ) }
                 </select>
@@ -173,7 +200,6 @@ const EmployeeCreateModal = () => {
                   { otherDependantValues[2].map( (item, key) => (
                     <option 
                       key={key} 
-                      selected={item.id === employeeDetails.state_id ? 'selected' : ''}
                       value={item.id}>{item.name}</option>
                   ) ) }
                 </select>
@@ -188,7 +214,6 @@ const EmployeeCreateModal = () => {
                   { otherDependantValues[3].map( (item, key) => (
                     <option 
                       key={key} 
-                      selected={item.id === employeeDetails.city_id ? 'selected' : ''}
                       value={item.id}>{item.name}</option>
                   ) ) }
                 </select>
