@@ -19,14 +19,14 @@ const EmployeeCreateModal = () => {
     const [countryData, setCountryData] = useState([]);
     const [stateData, setStateData] = useState([]);
     const [cityData, setCityData] = useState([]);
-    const [otherDependantValues, setotherDependantValues] = useState([]);
+    const [otherDependantValues, setotherDependantValues] = useState([deptData,countryData,stateData,cityData]);
 
     const [error, setError] = useState(null);
     const [message, setMessage] = useState('Message!!');
 
     const getEmployeeData = async() => {
       try {
-          const data = await axios.get(`/api/employee/0`).then((resp) =>{
+          const data = await axios.get(`/api/employee/1`).then((resp) =>{
             setDeptData(resp.data.departments);
             setCountryData(resp.data.countries);
             setStateData(resp.data.states);

@@ -8414,7 +8414,7 @@ var EmployeeCreateModal = function EmployeeCreateModal() {
       cityData = _useState10[0],
       setCityData = _useState10[1];
 
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([deptData, countryData, stateData, cityData]),
       _useState12 = _slicedToArray(_useState11, 2),
       otherDependantValues = _useState12[0],
       setotherDependantValues = _useState12[1];
@@ -8438,7 +8438,7 @@ var EmployeeCreateModal = function EmployeeCreateModal() {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return axios.get("/api/employee/0").then(function (resp) {
+              return axios.get("/api/employee/1").then(function (resp) {
                 setDeptData(resp.data.departments);
                 setCountryData(resp.data.countries);
                 setStateData(resp.data.states);
