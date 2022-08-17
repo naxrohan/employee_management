@@ -19,11 +19,29 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $current_page = 0;
+        $page_size = 10;
+        if(is_numeric($request->get('page'))){
+            $current_page = $request->get('page');
+        }
+        if(is_numeric($request->get('size'))){
+            $page_size = $request->get('size');
+        }
+
         try {
-            $employees = Employee::orderBy('id','desc')->get();
-            return response()->json($employees);
+            $employees = Employee::orderBy('id','asc')
+                    ->offset($page_size*$current_page)
+                    ->limit($page_size)
+                    ->get();
+            $total_items = Employee::all()->count();
+            
+            return response()->json([
+                'items' => $employees,
+                'total_items' => $total_items,
+                'current_page' => $current_page
+            ]);
         } catch (Exception $e) {
             Log::error($e);
             return response()->json( "Fetch Failure", 500);
