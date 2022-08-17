@@ -8,7 +8,7 @@ const EmployeeTable = () => {
   const [totalItems, setTotalItems] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
 
-  const pageSize = 1000;
+  const pageSize = 100;
   const pageDisplaySize = 10;
   const getEmployeeData = async(page , page_size) => {
     try {

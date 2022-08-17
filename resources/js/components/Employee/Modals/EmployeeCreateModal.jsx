@@ -133,6 +133,66 @@ const EmployeeCreateModal = () => {
                   onChange={handleInputChange}
                   value={employeeDetails.birthdate} />
               </div>
+
+              <div className="input-group mb-3">
+                <span className="input-group-text" id="basic-addon1x">Department</span>
+                <select className="form-control" 
+                  name='department_id'
+                  onChange={handleInputChange} >
+                    <option>--select department --</option>
+                  { otherDependantValues[0].map( (item, key) => (
+                    <option 
+                      key={key} 
+                      selected={item.id === employeeDetails.department_id ? 'selected' : ''}
+                      value={item.id}>{item.name}</option>
+                  ) ) }
+                </select>
+              </div>
+
+              <div className="input-group mb-3">
+                <span className="input-group-text" id="basic-addon1x">Country</span>
+                <select className="form-control" 
+                  name='country_id'
+                  onChange={handleInputChange} >
+                    <option>--select country --</option>
+                  { otherDependantValues[1].map( (item, key) => (
+                    <option 
+                      key={key} 
+                      selected={item.id === employeeDetails.country_id ? 'selected' : ''}
+                      value={item.id}>{item.name}</option>
+                  ) ) }
+                </select>
+              </div>
+
+              <div className="input-group mb-3">
+                <span className="input-group-text" id="basic-addon1x">State</span>
+                <select className="form-control" 
+                  name='state_id'
+                  onChange={handleInputChange} >
+                    <option>--select state --</option>
+                  { otherDependantValues[2].map( (item, key) => (
+                    <option 
+                      key={key} 
+                      selected={item.id === employeeDetails.state_id ? 'selected' : ''}
+                      value={item.id}>{item.name}</option>
+                  ) ) }
+                </select>
+              </div>
+
+              <div className="input-group mb-3">
+                <span className="input-group-text" id="basic-addon1x">City</span>
+                <select className="form-control" 
+                  name='city_id'
+                  onChange={handleInputChange} >
+                    <option>--select city --</option>
+                  { otherDependantValues[3].map( (item, key) => (
+                    <option 
+                      key={key} 
+                      selected={item.id === employeeDetails.city_id ? 'selected' : ''}
+                      value={item.id}>{item.name}</option>
+                  ) ) }
+                </select>
+              </div>
               
             </div>
 
